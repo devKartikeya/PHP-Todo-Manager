@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: "Poppins", Helvetica, sans-serif;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 html,
@@ -152,13 +153,14 @@ section input,
 textarea {
     font-size: 9px;
     border: 1px solid black;
+    padding: 4px;
 }
 
 .toggle {
     visibility: visible;
 }
 
-#root button {
+#root #button {
     width: 70%;
     background-color: rgb(70, 255, 70);
     font-weight: 600;
@@ -170,4 +172,13 @@ textarea {
     /* smaller width */
     align-self: center;
     /* center horizontally */
+}
+
+.edit-btn, .delete-btn {
+    background-color: blue;
+    cursor: pointer;
+    padding: 2px 2px ;
+    font-size: 10px;
+    border-radius: 6px;
+    color: white;
 }

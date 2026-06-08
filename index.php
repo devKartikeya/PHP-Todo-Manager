@@ -26,6 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO php_todo_manager (todo_name, todo_desc) VALUES (
             '$todo', '$desc' );";
     $res = mysqli_query($conn, $sql);
+    if ($res) {
+        header("Location: index.html");
+    }
 }
 
 ?>
@@ -70,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 echo "<td>" . htmlspecialchars($row['todo_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['todo_desc']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                                echo "<td>" . "<form action='services.php' method='POST'> <input type='hidden' name='todo_id' value='" . htmlspecialchars($row['todo_id']) . "'> <button type='submit' name='delete'  class='delete-btn'>Delete</button> </form>" . "</td>";
+                                echo "<td>" . "<form action='services.php' method='POST'> <input type='hidden' name='todo_id' value='" . htmlspecialchars($row['todo_id']) . "'> <button type='submit' class='edit-btn'>Edit</button> </form>" . "</td>";
                                 echo "</tr>";
                             }
                         } else {
