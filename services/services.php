@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $conn->prepare("DELETE FROM php_todo_manager WHERE todo_id = ?");
         $stmt->bind_param("i", $todoId);
         $stmt->execute();
-        header("Location: index.php");
+        header("Location: /index.php");
         exit;
     }
 
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("ssi", $todoName, $todoDesc, $todoId);
         $stmt->execute();
 
-        header("Location: index.php");
+        header("Location: /index.php");
         exit;
     }
 }

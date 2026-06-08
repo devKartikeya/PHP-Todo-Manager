@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/globals.css">
     <title>PHP-Todo-Manager</title>
 </head>
 
@@ -73,9 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 echo "<td>" . htmlspecialchars($row['todo_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['todo_desc']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
-                                echo "<td>" . "<form action='services.php' method='POST'> <input type='hidden' name='todo_id' value='" . htmlspecialchars($row['todo_id']) . "'> <button type='submit' name='delete'  class='delete-btn'>Delete</button> </form>" . "</td>";
+                                echo "<td>" . "<form action='./services/services.php' method='POST'> <input type='hidden' name='todo_id' value='" . htmlspecialchars($row['todo_id']) . "'> <button type='submit' name='delete'  class='delete-btn'>Delete</button> </form>" . "</td>";
                                 echo "<td>
-                                <a href='edit.php?todo_id=" . htmlspecialchars($row['todo_id']) . "' class='edit-btn'>Edit</a>
+                                <a href='./views/edit.php?todo_id=" . htmlspecialchars($row['todo_id']) . "' class='edit-btn'>Edit</a>
                                 </td>";
                                 echo "</tr>";
                             }
@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             Add Todo
         </button>
     </div>
-    <script src="script.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 
 </html>
