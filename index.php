@@ -74,7 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 echo "<td>" . htmlspecialchars($row['todo_desc']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
                                 echo "<td>" . "<form action='services.php' method='POST'> <input type='hidden' name='todo_id' value='" . htmlspecialchars($row['todo_id']) . "'> <button type='submit' name='delete'  class='delete-btn'>Delete</button> </form>" . "</td>";
-                                echo "<td>" . "<form action='services.php' method='POST'> <input type='hidden' name='todo_id' value='" . htmlspecialchars($row['todo_id']) . "'> <button type='submit' class='edit-btn'>Edit</button> </form>" . "</td>";
+                                echo "<td>
+                                <a href='edit.php?todo_id=" . htmlspecialchars($row['todo_id']) . "' class='edit-btn'>Edit</a>
+                                </td>";
                                 echo "</tr>";
                             }
                         } else {
