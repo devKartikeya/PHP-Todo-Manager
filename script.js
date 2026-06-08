@@ -2,10 +2,10 @@ const button = document.getElementById('button');
 const main = document.getElementById('main');
 const addCategoryForm = document.getElementById('addForm');
 
-button.addEventListener('click', (e) => {
-    addCategoryForm.style.visibility = "visible";
+button.addEventListener('click', () => {
+    addCategoryForm.classList.add('show');
 });
 
-main.addEventListener('click', (e) => {
-    addCategoryForm.style.visibility = "hidden";
-})
+main.addEventListener('click', () => {
+    addCategoryForm.classList.remove('show');
+});

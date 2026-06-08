@@ -1,16 +1,24 @@
 <?php
 
+/* MySQL Server Details */
 $server = "localhost";
 $username = "root";
 $password = "devMishra7";
 $database = "php_todo_manager";
 
+/* MySQL Connection */
 $conn = mysqli_connect($server, $username, $password, $database);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+/* GET All Todos */
+$sql = "SELECT * FROM php_todo_manager";
+$response = mysqli_query($conn, $sql);
+
+
+/* Add Todo */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $todo = $_POST['todo'];
     $desc = $_POST['desc'];
@@ -41,6 +49,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div id="heading">
                 <h4>PHP - Todo-Manager</h4>
                 <h6>Your Trusted Task Manager</h6>
+            </div>
+            <div id="todoList">
+                <h3>All Todos</h3>
+                <table border="1" cellpadding="10" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Todo</th>
+                            <th>Description</th>
+                            <th>Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if (mysqli_num_rows($response) > 0) {
+                            while ($row = mysqli_fetch_assoc($response)) {
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($row['todo_id']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['todo_name']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['todo_desc']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='4'>No todos yet!</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
             </div>
         </main>
         <section id="addForm">
